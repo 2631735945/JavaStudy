@@ -3,5 +3,8 @@ package com.situ.day8_0718.test;
 public class a {
     public static void main(String[] args) {
         System.out.println("hello");
+        for (int i = 0; i < 100; i++) {
+            System.out.println(i);
+        }
     }
 }
