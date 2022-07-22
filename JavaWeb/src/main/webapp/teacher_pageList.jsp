@@ -6,7 +6,7 @@
   Time: 9:50
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"  %>
 <html>
 <head>
     <title>Title</title>
@@ -50,9 +50,21 @@
 <nav aria-label="Page navigation">
     <ul class="pagination">
         <li>
+            <%
+                if(pageInfo.getPageNo()==1){
+            %>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+            <%
+            }else if(pageInfo.getPageNo()>1){
+            %>
             <a href="<%=request.getContextPath()%>/teacher?method=selectByPage&pageNo=<%=pageInfo.getPageNo()-1%>" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
             </a>
+            <%
+                }
+            %>
         </li>
         <%
             for(int i=1;i<=pageInfo.getTotalPages();i++){
@@ -62,12 +74,25 @@
             }
         %>
 
-
+<%--        javaScript:nextPage(<%=pageInfo.getPageNo()>,<%=pageInfo.getTotalPages()%>)--%>
         <li>
-            <a href="javaScript:nextPage(<%=pageInfo.getPageNo()>)"  aria-label="Next">
-<%--                    <%=request.getContextPath()%>/teacher?method=selectByPage&pageNo=<%=pageInfo.getPageNo()+1%>--%>
+            <%
+                if(pageInfo.getPageNo()<pageInfo.getTotalPages()){
+            %>
+                <a href="<%=request.getContextPath()%>/teacher?method=selectByPage&pageNo=<%=pageInfo.getPageNo()+1%>"  aria-label="Next">
+            <%--                    <%=request.getContextPath()%>/teacher?method=selectByPage&pageNo=<%=pageInfo.getPageNo()+1%>--%>
+                 <span aria-hidden="true">&raquo;</span>
+                 </a>
+            <%
+                } else if(pageInfo.getPageNo().equals(pageInfo.getTotalPages())){
+            %>
+            <a href="#"  aria-label="Next">
+                <%-- <%=request.getContextPath()%>/teacher?method=selectByPage&pageNo=<%=pageInfo.getPageNo()+1%> --%>
                 <span aria-hidden="true">&raquo;</span>
             </a>
+            <%
+                }
+            %>
         </li>
     </ul>
 </nav>
@@ -78,9 +103,9 @@
             location.href='<%=request.getContextPath()%>/teacher?method=deleteById&id='+id
         }
     }
-    function nextPage(pageNo){
-        if(page<getTotalPages()){
-            location.href=
+    function nextPage(pageNo,TotalPages){
+        if(pageNo<TotalPages){
+            location.href='<%=request.getContextPath()%>/teacher?method=selectByPage&pageNo='+(pageNo+1)
         }
     }
 </script>
