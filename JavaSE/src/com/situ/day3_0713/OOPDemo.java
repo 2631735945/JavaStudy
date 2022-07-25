@@ -1,6 +1,5 @@
 package com.situ.day3_0713;
 
-import com.sun.org.apache.xpath.internal.operations.Variable;
 import org.junit.jupiter.api.Test;
 
 import java.util.Scanner;
@@ -8,7 +7,6 @@ import java.util.Scanner;
 public class OOPDemo {
     @Test
     public void test() {
-        int num = 3;
 //    student1:变量 、new出来对象、对象
 //        Student student1 = new Student();
 //        student1.id = 1;
@@ -71,18 +69,18 @@ public class OOPDemo {
         for (Student student1 : student) {
             System.out.println(student1);
         }
-    }@Test
-    public void test8() {
-        Student student1 = new Student();
-        student1.setId(12);
-        student1.setName("zhangsan");
+    }
 
-        Student student2=new Student(1,"张三",22);
+    @Test
+    public void test8() {
+
+        Student student2 = new Student(1, "张三", 22, "男");
         System.out.println(student2);
 
 
     }
-/**************************作业********************************/
+
+    /**************************作业********************************/
     @Test
     public void test5() {
         Scanner scanner = new Scanner(System.in);
@@ -108,4 +106,5 @@ public class OOPDemo {
         System.out.println(rectangle2.area());
 
     }
+   /**********************************************************************/
 }

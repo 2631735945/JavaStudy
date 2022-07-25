@@ -1,8 +1,6 @@
 package com.situ.day3_0713;
 
-import java.lang.reflect.Constructor;
 
-//    张三、王五、李四
 //    实体类:和数据库表一一对应
 public class Student {
     //属性 field:静态的描述这个事物特征
@@ -19,8 +17,9 @@ public class Student {
 //    如果你自己实现了任何一个构造方法
 //    java就不会再提供这个默认的无参构造方法
     public Student() {
-        System.out.println("Student student1");
+//        System.out.println("Student student1");
     }
+
 //有参构造方法
 //    Constructor:构造方法
     public Student(int id, String name, int age, String gender) {
@@ -36,21 +35,19 @@ public class Student {
         // new Student(int id, String name, int age, String gender)
         this(id, name, age, "男");
         System.out.println("Student student3");
-//        this.id = 123;
-//        this.name = name;
-//        this.age = age;
+
     }
 
     //    实例方法，必须先new出一个对象，对象.方法();
     public void setId(int id) {
-//      The value id assigned to 'id' is never used
+//        The value id assigned to 'id' is never used
+//        Variable 'id' is assigned to itself  变量id 自身给自身赋值
         // 就近原则
-        // id = id;
+//        id = id;
         // this：当前new出来对象
-        // student1.setId(1) this当成student1这个对象
+        // student.setId(1) this当成student这个对象
         this.id = id;
     }
-
     public int getId() {
         return id;
     }

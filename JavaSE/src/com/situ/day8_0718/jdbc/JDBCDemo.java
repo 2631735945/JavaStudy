@@ -67,7 +67,6 @@ public class JDBCDemo {
             }
             if (conn != null) {
                 try {
-
                     conn.close();
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
@@ -139,7 +138,6 @@ public class JDBCDemo {
             }
             if (conn != null) {
                 try {
-
                     conn.close();
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
