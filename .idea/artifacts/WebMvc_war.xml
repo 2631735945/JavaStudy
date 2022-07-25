@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="WebMvc:war">
+    <output-path>$PROJECT_DIR$/WebMvc/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>WebMvc</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="WebMvc-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="WebMvc:war exploded" />
+    </root>
+  </artifact>
+</component>
