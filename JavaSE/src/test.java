@@ -1,4 +1,5 @@
 import com.sun.xml.internal.bind.v2.TODO;
+import org.junit.jupiter.api.Test;
 
 public class test {
 
@@ -42,5 +43,19 @@ public class test {
 //        //将字符串String值解析为byte值
 //        byte b7 = Byte.parseByte(s);
 //        System.out.println(b6);
+    }
+    @Test
+    public void test(){
+
+
+
+        char k=65;
+        System.out.println(k);
+//        k++;
+//        int a[]={1,2,3,4,5};
+//        System.out.println(a[k]);
+
+
+
     }
 }

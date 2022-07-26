@@ -16,6 +16,12 @@ public class Teacher {
         this.address = address;
     }
 
+    public Teacher(String name, Integer age, String address) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+    }
+
     public Integer getId() {
         return id;
     }
