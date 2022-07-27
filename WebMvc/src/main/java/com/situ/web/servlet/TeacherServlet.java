@@ -52,7 +52,6 @@ public class TeacherServlet extends HttpServlet {
         String pageSize=req.getParameter("pageSize");
         if(pageNo==null|| pageNo.equals("")){
             pageNo="1";
-
         }
         if(pageSize==null|| pageSize.equals("")){
             pageSize="5";
