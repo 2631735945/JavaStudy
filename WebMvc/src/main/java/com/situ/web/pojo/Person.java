@@ -8,9 +8,15 @@ public class Person implements Serializable {
     private  String gender;
 
     public Person() {
+        System.out.println("Person.Person");
     }
+static{
+        Person person=new Person("23",12,"nan");
+    System.out.println(person.getName());
 
+}
     public Person(String name, Integer age, String gender) {
+        System.out.println("Person.Person");
         this.name = name;
         this.age = age;
         this.gender = gender;
