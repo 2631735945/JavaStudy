@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -16,9 +17,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </head>
 <body>
-<%
-    PageInfo pageInfo= (PageInfo) request.getAttribute("pageInfo");
-%>
+
 <a href="<%=request.getContextPath()%>/teacher_add.jsp">添加</a>
 <table class="table table-striped table-bordered table-hover table-condensed">
     <tr>
@@ -29,70 +28,60 @@
         <td>删除</td>
         <td>编辑</td>
     </tr>
-    <%
-        for (Teacher teacher : pageInfo.getList()) {
-    %>
-    <tr>
-        <td><%=teacher.getId()%></td>
-        <td><%=teacher.getName()%></td>
-        <td><%=teacher.getAge()%></td>
-        <td><%=teacher.getAddress()%></td>
-        <td><a href="javaScript:deleteById(<%=teacher.getId()%>)">删除</a></td>
-        <td><a href="<%=request.getContextPath()%>/teacher?method=updateTeacherPage&id=<%=teacher.getId()%>">编辑</a></td>
-    </tr>
-    <%
-        }
+  <c:forEach items="${pageInfo.list}" var="teacher">
+      <tr>
+          <td>${teacher.id}</td>
+          <td>${teacher.name}</td>
+          <td>${teacher.age}</td>
+          <td>${teacher.address}</td>
 
-    %>
+          <td><a href="javaScript:deleteById(${teacher.id})">删除</a></td>
+          <td><a href="<%=request.getContextPath()%>/teacher?method=updateTeacherPage&id=${teacher.id}">编辑</a></td>
+      </tr>
+  </c:forEach>
 
 </table>
 
 <nav aria-label="Page navigation">
     <ul class="pagination">
         <li>
-            <%
-                if(pageInfo.getPageNo()==1){
-            %>
-            <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-            <%
-            }else if(pageInfo.getPageNo()>1){
-            %>
-            <a href="<%=request.getContextPath()%>/teacher?method=selectByPage&pageNo=<%=pageInfo.getPageNo()-1%>" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-            <%
-                }
-            %>
+<%--            <%--%>
+<%--                if(pageInfo.getPageNo()==1){--%>
+<%--            %>--%>
+           <c:if test="${pageInfo.pageNo==1}">
+               <a href="#" aria-label="Previous">
+                   <span aria-hidden="true">&laquo;</span>
+               </a>
+           </c:if>
+
+           <c:if test="${pageInfo.pageNo>1}">
+               <a href="<%=request.getContextPath()%>/teacher?method=selectByPage&pageNo=${pageInfo.pageNo-1}" aria-label="Previous">
+                   <span aria-hidden="true">&laquo;</span>
+               </a>
+           </c:if>
+
         </li>
-        <%
-            for(int i=1;i<=pageInfo.getTotalPages();i++){
-        %>
-        <li><a href="<%=request.getContextPath()%>/teacher?method=selectByPage&pageNo=<%=i%>"><%=i%></a></li>
-        <%
-            }
-        %>
+        <c:forEach begin="1" end="${pageInfo.totalPages}" var="i">
+            <li><a href="<%=request.getContextPath()%>/teacher?method=selectByPage&pageNo=${i}">${i}</a></li>
+        </c:forEach>
+
 
 <%--        javaScript:nextPage(<%=pageInfo.getPageNo()>,<%=pageInfo.getTotalPages()%>)--%>
         <li>
-            <%
-                if(pageInfo.getPageNo()<pageInfo.getTotalPages()){
-            %>
-                <a href="<%=request.getContextPath()%>/teacher?method=selectByPage&pageNo=<%=pageInfo.getPageNo()+1%>"  aria-label="Next">
-            <%--                    <%=request.getContextPath()%>/teacher?method=selectByPage&pageNo=<%=pageInfo.getPageNo()+1%>--%>
-                 <span aria-hidden="true">&raquo;</span>
-                 </a>
-            <%
-                } else if(pageInfo.getPageNo().equals(pageInfo.getTotalPages())){
-            %>
-            <a href="#"  aria-label="Next">
-                <%-- <%=request.getContextPath()%>/teacher?method=selectByPage&pageNo=<%=pageInfo.getPageNo()+1%> --%>
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-            <%
-                }
-            %>
+
+            <c:if test="${pageInfo.pageNo<pageInfo.totalPages}">
+                <a href="<%=request.getContextPath()%>/teacher?method=selectByPage&pageNo=${pageInfo.pageNo+1}"  aria-label="Next">
+                        <%--    <%=request.getContextPath()%>/teacher?method=selectByPage&pageNo=<%=pageInfo.getPageNo()+1%>--%>
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </c:if>
+           <c:if test="${pageInfo.pageNo==pageInfo.totalPages}">
+               <a href="#"  aria-label="Next">
+                       <%-- <%=request.getContextPath()%>/teacher?method=selectByPage&pageNo=<%=pageInfo.getPageNo()+1%> --%>
+                   <span aria-hidden="true">&raquo;</span>
+               </a>
+           </c:if>
+
         </li>
     </ul>
 </nav>
