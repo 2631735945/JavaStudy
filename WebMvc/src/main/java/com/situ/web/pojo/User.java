@@ -3,15 +3,64 @@ package com.situ.web.pojo;
 public class User {
     private Integer id;
     private String name;
-   private String  password;
+    private String password;
+    private Integer age;
+    private String address;
+    private String gender;
+
+    public User(Integer id, String name, String password, Integer age, String address, String gender) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.age = age;
+        this.address = address;
+        this.gender = gender;
+    }
+
+    public User(String name, String password, Integer age, String address, String gender) {
+        this.name = name;
+        this.password = password;
+        this.age = age;
+        this.address = address;
+        this.gender = gender;
+    }
 
     public User() {
+    }
+
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
     }
 
     public User(Integer id, String name, String password) {
         this.id = id;
         this.name = name;
         this.password = password;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public Integer getId() {
@@ -44,6 +93,9 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
+                ", age=" + age +
+                ", address='" + address + '\'' +
+                ", gender='" + gender + '\'' +
                 '}';
     }
 }

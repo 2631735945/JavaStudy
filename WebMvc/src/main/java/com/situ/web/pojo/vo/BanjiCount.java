@@ -1,5 +1,7 @@
 package com.situ.web.pojo.vo;
 
+
+//做ECharts数据用
 public class BanjiCount {
     private String name;
     private Integer value;

@@ -34,12 +34,19 @@ public class LoginFilter implements Filter {
                 || servletPath.endsWith(".png")
                 || servletPath.endsWith(".jpg")
                 || servletPath.equals("/login.jsp")
-                || servletPath.equals("/user") && method.equals("login")) {
+                || servletPath.equals("/verifyCode")
+                || servletPath.equals("/user")
+                || servletPath.equals("/user") && method.equals("login")
+                || servletPath.equals("/user") && method.equals("addUser")
+                || servletPath.equals("/user") && method.equals("selectByName")) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
+
+        System.out.println(user);
+
         if (user == null ) {
             response.sendRedirect(request.getContextPath() + "/login.jsp");
             return;

@@ -9,6 +9,7 @@ public class Demo {
         daYan.egg();
         daYan.fly();
         daYan.print();
+
         // bird是站在AbstractBird这个角度去看new出来的大雁，
         // 只能看到下蛋这个功能
         AbstractBird abstractBird=new DaYan();

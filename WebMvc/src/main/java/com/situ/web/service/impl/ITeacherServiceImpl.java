@@ -24,7 +24,7 @@ public class ITeacherServiceImpl implements ITeacherService {
 
     @Override
     public PageInfo selectByPage(Integer pageNo, Integer pageSize) {
-        PageInfo pageInfo = new PageInfo();
+        PageInfo<Teacher> pageInfo = new PageInfo<>();
         pageInfo.setPageNo(pageNo);
         pageInfo.setPageSize(pageSize);
 
@@ -39,8 +39,8 @@ public class ITeacherServiceImpl implements ITeacherService {
     }
 
     @Override
-    public void deleteById(Integer id) {
-        teacherDao.deleteById(id);
+    public int deleteById(Integer id) {
+       return teacherDao.deleteById(id);
     }
 
     @Override

@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CountDownLatch;
 
 public class ITeacherDaoImpl implements ITeacherDao {
     @Override
@@ -72,22 +73,24 @@ public class ITeacherDaoImpl implements ITeacherDao {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public int deleteById(Integer id) {
         Connection connection = null;
         PreparedStatement statement = null;
+        int count=0;
         try {
             connection = JDBCUtil.getConnection();
             String sql = "delete from teacher where id=?";
             statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
             System.out.println(statement);
-            int count = statement.executeUpdate();
+             count = statement.executeUpdate();
             System.out.println(count);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
             JDBCUtil.close(connection, statement, null);
         }
+        return count;
     }
 
     @Override

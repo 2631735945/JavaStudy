@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="WebMvc" />
         <module name="JavaWeb" />
+        <module name="Test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="JavaWeb" target="1.8" />
       <module name="MVC" target="1.8" />
+      <module name="Test" target="1.8" />
       <module name="web" target="1.8" />
       <module name="WebMvc" target="1.8" />
     </bytecodeTargetLevel>

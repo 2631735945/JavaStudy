@@ -4,6 +4,8 @@ import com.situ.web.pojo.Teacher;
 import com.situ.web.service.ITeacherService;
 import com.situ.web.service.impl.ITeacherServiceImpl;
 import com.situ.web.util.JDBCUtil;
+import com.situ.web.util.JSONResult;
+import com.situ.web.util.JSONUtil;
 import com.situ.web.util.PageInfo;
 
 import javax.servlet.ServletException;
@@ -22,11 +24,14 @@ import java.util.List;
 @WebServlet("/teacher")
 public class TeacherServlet extends HttpServlet {
     private ITeacherService teacherService=new ITeacherServiceImpl();
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
        req.setCharacterEncoding("UTF-8");
+
         String method=req.getParameter("method");
+
         if(method==null || method.equals("")){
             method="selectByPage";
         }
@@ -99,8 +104,15 @@ public class TeacherServlet extends HttpServlet {
     private void deleteById(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         System.out.println("TeacherServlet.deleteById");
         int id= Integer.parseInt(req.getParameter("id"));
-        teacherService.deleteById(id);
-        resp.sendRedirect(req.getContextPath()+"/teacher?method=selectByPage");
+       int count = teacherService.deleteById(id);
+
+        if(count>0){
+            JSONUtil.toJSON(resp,JSONResult.ok("删除成功"));
+        } else {
+            JSONUtil.toJSON(resp,JSONResult.error("删除失败"));
+        }
+
+//        resp.sendRedirect(req.getContextPath()+"/teacher?method=selectByPage");
     }
 
     private void selectTeacherAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

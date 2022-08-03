@@ -3,8 +3,13 @@
 <html>
 <head>
   <title>主页</title>
+  <script src="static/jquery-2.1.4.js"></script>
+  <script src="static/bootstrap-3.4.1/dist/js/bootstrap.js"></script>
   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/static/layui/css/layui.css"/>
   <script src="<%=request.getContextPath()%>/static/layui/layui.js"></script>
+  <script src="static/layer/layer.js"></script>
+  <script src="static/mylayer.js"></script>
+
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -46,7 +51,7 @@
             <dd>
               <a href="javascript:;"
                  data-url="${pageContext.request.contextPath}/user"
-                 class="site-demo-active">管理员管理</a>
+                 class="site-demo-active">用户管理</a>
             </dd>
             <dd>
               <a href="javascript:;"
@@ -60,9 +65,15 @@
             </dd>
             <dd>
               <a href="javascript:;"
-                 data-url="${path}/echarts.jsp"
+                 data-url="${pageContext.request.contextPath}/user_list.jsp"
+                 class="site-demo-active">管理员管理</a>
+            </dd>
+            <dd>
+              <a href="javascript:;"
+                 data-url="${pageContext.request.contextPath}/echarts.jsp"
                  class="site-demo-active">统计图表</a>
             </dd>
+
 
           </dl>
         </li>
@@ -85,7 +96,7 @@
     </div>
   </div>
   <div class="layui-body"><!-- 内容主体区域 -->
-    <iframe name="rightframe" width="99%" height="97%" src="/echarts/getEChartsPage"></iframe>
+    <iframe name="rightframe" width="99%" height="97%" src="${pageContext.request.contextPath}/echarts.jsp" ></iframe>
   </div>
   <div class="layui-footer">© JAVA - 底部固定区域</div>
 </div>

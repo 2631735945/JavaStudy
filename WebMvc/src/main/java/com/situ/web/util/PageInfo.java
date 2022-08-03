@@ -5,9 +5,9 @@ import com.situ.web.pojo.Teacher;
 
 import java.util.List;
 
-public class PageInfo {
+public class PageInfo<T>{
 //    存放的数据
-    private List<Teacher> list;
+    private List<T> list;
 //    当前页
     private Integer pageNo;
 //    一页显示的数据数量
@@ -19,18 +19,18 @@ public class PageInfo {
 
     }
 
-    public PageInfo(List<Teacher> list, Integer pageNo, Integer pageSize, Integer totalPages) {
+    public PageInfo(List<T> list, Integer pageNo, Integer pageSize, Integer totalPages) {
         this.list = list;
         this.pageNo = pageNo;
         this.pageSize = pageSize;
         this.totalPages = totalPages;
     }
 
-    public List<Teacher> getList() {
+    public List<T> getList() {
         return list;
     }
 
-    public void setList(List<Teacher> list) {
+    public void setList(List<T> list) {
         this.list = list;
     }
 

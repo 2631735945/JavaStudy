@@ -3,6 +3,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/JavaWeb" />
     <file type="web" url="file://$PROJECT_DIR$/mvc" />
+    <file type="web" url="file://$PROJECT_DIR$/Test" />
     <file type="web" url="file://$PROJECT_DIR$/WebMvc" />
   </component>
   <component name="MavenProjectsManager">
@@ -11,6 +12,7 @@
         <option value="$PROJECT_DIR$/JavaWeb/pom.xml" />
         <option value="$PROJECT_DIR$/JavaWeb/web/pom.xml" />
         <option value="$PROJECT_DIR$/WebMvc/pom.xml" />
+        <option value="$PROJECT_DIR$/Test/pom.xml" />
       </list>
     </option>
   </component>

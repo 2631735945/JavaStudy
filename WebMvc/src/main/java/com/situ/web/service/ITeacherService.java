@@ -12,7 +12,7 @@ public interface ITeacherService {
 
     PageInfo selectByPage(Integer pageNo, Integer pageSize);
 
-    void deleteById(Integer id);
+    int deleteById(Integer id);
 
     void add(Teacher teacher);
 

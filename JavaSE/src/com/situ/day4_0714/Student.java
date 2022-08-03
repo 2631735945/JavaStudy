@@ -7,7 +7,6 @@ import java.security.AccessControlContext;
 public class Student extends Person {
 
     private String className;
-
     public Student() {
 //        new Person()
 //        super()这个不写 默认java会帮你加上
