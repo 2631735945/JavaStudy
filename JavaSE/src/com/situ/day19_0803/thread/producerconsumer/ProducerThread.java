@@ -18,7 +18,7 @@ public class ProducerThread extends Thread{
             panzi.putCake(cake);
             System.out.println(Thread.currentThread().getName() + " getCake: " + cake);
 
-            // 等待的时间是随机的，模拟吃蛋糕时间
+            // 等待的时间是随机的，模拟生产蛋糕时间
             try {
                 Thread.sleep(new Random().nextInt(5000));
             } catch (InterruptedException e) {

@@ -3,7 +3,7 @@ package com.situ.day19_0803.thread;
 
 public class ThreadDemo {
 
-    public static void main(String[] args) {
+    public static void main4(String[] args) {
         // 匿名内部类
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -36,7 +36,7 @@ public class ThreadDemo {
         System.out.println("ThreadDemo.main");
     }
 
-    public static void main2(String[] args) {
+    public static void main(String[] args) {
         System.out.println(Thread.currentThread().getName());
         MyThread myThread = new MyThread();
         // 这不是启动一个线程，这是不同的方法调用

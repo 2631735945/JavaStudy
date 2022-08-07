@@ -246,5 +246,15 @@ public class IODemo {
             }
         }
     }
-
+@Test
+    public void DataOutputStream(){
+    try {
+        FileOutputStream fos = new FileOutputStream("afile.txt");
+        DataOutputStream dos = new DataOutputStream(fos);
+        dos.writeInt(4);
+        dos.writeChar(1);
+        dos.close();
+        fos.close();
+    } catch (IOException e) {}
+}
 }
