@@ -46,6 +46,7 @@ public class ReflectDemo {
 
     @Test
     public void testConstructor3() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+
         // Student student = new Student(1, "zhangsan", 23);
         Class clazz = Student.class;
         Constructor constructor = clazz.getDeclaredConstructor(Integer.class, String.class, Integer.class);
@@ -53,6 +54,7 @@ public class ReflectDemo {
         constructor.setAccessible(true);
         Student student = (Student) constructor.newInstance(1, "zhangsan", 23);
         System.out.println(student);
+
     }
 
     @Test
@@ -61,6 +63,7 @@ public class ReflectDemo {
         //student.setName("lisi");
 
         Class clazz = Student.class;
+//        默认构造函数，不需要获取构造函数，可直接实例
         Student student = (Student) clazz.newInstance();
         Method method = clazz.getMethod("setName", String.class);
         method.invoke(student, "lisi");

@@ -9,11 +9,10 @@ public class CASDemo {
         AtomicInteger atomicInteger = new AtomicInteger(2020);
         boolean bool1 = atomicInteger.compareAndSet(2020, 2022);
         System.out.println(bool1);// true
-        System.out.println(atomicInteger);// 2022
+        System.out.println(atomicInteger.get());// 2022
         boolean bool2 = atomicInteger.compareAndSet(2020, 2023);
         System.out.println(bool2);// true
     }
-
     @Test
     public void test1() {
         AtomicInteger atomicInteger = new AtomicInteger(0);

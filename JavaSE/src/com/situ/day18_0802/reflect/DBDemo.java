@@ -15,6 +15,7 @@ public class DBDemo {
         //读取配置文件
         Properties properties = new Properties();
         properties.load(fileInputStream);
+
         String className = properties.getProperty("className");
         Class clazz = Class.forName(className);
         // 无参构造方法

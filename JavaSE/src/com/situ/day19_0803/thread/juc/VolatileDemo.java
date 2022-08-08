@@ -24,5 +24,8 @@ public class VolatileDemo {
 
         num = 1;
         System.out.println(num);
+//        不加volatile的时候  程序不会中断，会陷入死循环，因为num变为1的时候
+//        Thread进程不知道，一直以为run还是零，然后就一直执行
+//        加了volatile后，因为它有可见性，那么num变为1了之后， Thread进程也知道了，然后就结束循环
     }
 }

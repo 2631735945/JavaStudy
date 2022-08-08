@@ -110,6 +110,7 @@ public class IODemo {
                 System.out.println(length);
                 System.out.println(Arrays.toString(buffer));
                 // 读出多少就写多少，最后一次读取的数据可能不够buffer数组长度的数据
+//                fileWriter.write(buffer);
                 fileWriter.write(buffer, 0, length);
             }
         } catch (FileNotFoundException e) {
@@ -206,6 +207,31 @@ public class IODemo {
                 }
             }
         }
+//        try {
+//            fileOutputStream =new FileOutputStream("student");
+//            objectOutputStream=new ObjectOutputStream(fileOutputStream);
+//            objectOutputStream.writeObject(student);
+//
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }finally {
+//            if(objectOutputStream!=null){
+//                try {
+//                    objectOutputStream.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            if(fileOutputStream!=null){
+//                try {
+//                    fileOutputStream.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
     }
 
     @Test
@@ -246,6 +272,8 @@ public class IODemo {
             }
         }
     }
+
+//   牛客的一道题
 @Test
     public void DataOutputStream(){
     try {

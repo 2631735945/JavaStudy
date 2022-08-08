@@ -11,7 +11,7 @@ public class GenericDemo4 {
         for (Object o : list) {
             System.out.println(o);
         }
-        // list.add("abc");
+//         list.add("abc");
     }
 
     // Long Double Integer extends Number

@@ -10,7 +10,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 public class ReadWriteLockDemo {
     public static void main(String[] args) {
         //未上锁：
-        // MyCache myCache = new MyCache();
+//         MyCache myCache = new MyCache();
         //myCache.write("cn", "中国");
         //myCache.write("us", "美国");
         //myCache.read("cn");
