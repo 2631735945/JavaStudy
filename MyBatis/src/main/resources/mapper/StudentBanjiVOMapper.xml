@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--保存命令：一张表一个实体类就对应一个mapper-->
+<!--namespace：命令空间-->
+<mapper namespace="com.situ.MyBatis.pojo.StudentBanjiVO">
+
+    <resultMap id="StudentBanjiMap" type="Student">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="gender" property="gender"/>
+        <association property="banji" javaType="Banji">
+            <id column="banjiId" property="id"/>
+            <result column="banjiName" property="name"/>
+        </association>
+    </resultMap>
+    <!--    resultMap="StudentBanjiMap"-->
+    <select id="selectStudentBanjiInfo1"  resultType="StudentBanjiVO">
+        #
+        select s.id,s.`name`,s.age,s.gender,b.id AS banjiId,b.name AS banjiName
+        from student as s
+                 inner join banji as b
+                            on s.banji_id = b.id
+
+    </select>
+
+
+
+</mapper>
+

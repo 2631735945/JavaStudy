@@ -9,6 +9,7 @@ public class CollectionDemo {
 
     @Test
     public void test1(){
+
         Collection<String> collection=new ArrayList<>();;
         collection.add("张三");
         collection.add("李四");

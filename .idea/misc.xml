@@ -3,8 +3,13 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/JavaWeb" />
     <file type="web" url="file://$PROJECT_DIR$/mvc" />
+    <file type="web" url="file://$PROJECT_DIR$/MyBatis" />
+    <file type="web" url="file://$PROJECT_DIR$/SpringIOC" />
+    <file type="web" url="file://$PROJECT_DIR$/SpringMVC" />
+    <file type="web" url="file://$PROJECT_DIR$/SpringMvcMyBatis" />
     <file type="web" url="file://$PROJECT_DIR$/Test" />
     <file type="web" url="file://$PROJECT_DIR$/WebMvc" />
+    <type id="Spring" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -13,6 +18,9 @@
         <option value="$PROJECT_DIR$/JavaWeb/web/pom.xml" />
         <option value="$PROJECT_DIR$/WebMvc/pom.xml" />
         <option value="$PROJECT_DIR$/Test/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringMVC/pom.xml" />
+        <option value="$PROJECT_DIR$/MyBatis/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringIOC/pom.xml" />
       </list>
     </option>
   </component>

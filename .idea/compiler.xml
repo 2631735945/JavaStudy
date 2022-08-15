@@ -7,13 +7,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="WebMvc" />
-        <module name="JavaWeb" />
+        <module name="SpringIOC" />
         <module name="Test" />
+        <module name="SpringMVC" />
+        <module name="MyBatis" />
+        <module name="JavaWeb" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="JavaWeb" target="1.8" />
       <module name="MVC" target="1.8" />
+      <module name="MyBatis" target="1.8" />
+      <module name="SpringIOC" target="1.8" />
+      <module name="SpringMVC" target="1.8" />
+      <module name="SpringMvcMyBatis" target="1.8" />
       <module name="Test" target="1.8" />
       <module name="web" target="1.8" />
       <module name="WebMvc" target="1.8" />

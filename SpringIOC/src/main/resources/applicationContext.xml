@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.1.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-4.1.xsd">
+
+	<!-- IOC容器配置，要创建的所有对象都配置到这里，交给Spring容器来管理 -->
+<!--	scope="prototype"  多例模式-->
+<!--	scope="singleton"  单例模式-->
+<!--	1、set方法注入-->
+	<bean scope="singleton"  name="banji" class="com.situ.spring.pojo.Banji">
+		<!-- 值类型注入 -->
+		<property name="id" value="1"/>
+		<property name="name" value="Java"/>
+	</bean>
+	<bean scope="singleton"  name="student" class="com.situ.spring.pojo.Student">
+		<!-- 值类型注入 -->
+		<property name="id" value="1"/>
+		<property name="name" value="zhansgan"/>
+		<property name="age" value="1"/>
+		<property name="gender" value="男"/>
+		<!-- ref:reference参考、引用
+       引用类型的注入
+   -->
+		<property name="banji" ref="banji"/>
+	</bean>
+
+<!--	构造方法注入-->
+	<bean name="banji1" class="com.situ.spring.pojo.Banji">
+		<constructor-arg name="id" value="2"/>
+		<constructor-arg name="name" value="Java"/>
+	</bean>
+	<bean name="student1" class="com.situ.spring.pojo.Student">
+		<constructor-arg name="id" value="1"/>
+		<constructor-arg name="name" value="s1"/>
+		<constructor-arg name="age" value="1"/>
+		<constructor-arg name="gender" value="nsn"/>
+		<constructor-arg name="banji"  ref="banji1"/>
+	</bean>
+
+
+<!--	StudentDaoImpl studentDao=new StuentDaoImpl();-->
+
+	<bean name="studentDao" class="com.situ.spring.dao.impl.StudentDaoImpl">
+	</bean>
+	<bean name="studentService" class="com.situ.spring.service.impl.StudentServiceImpl">
+		<property name="studentDao" ref="studentDao"/>
+	</bean>
+	<bean name="studentController" class="com.situ.spring.controller.StudentController">
+		<property name="studentService" ref="studentService"/>
+	</bean>
+
+
+</beans>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.situ.ssm.dao.IStudentDao">
+
+
+    <insert id="insertStudent" parameterType="Student">
+        insert into student(name, age, gender)
+        values (#{name}, #{age}, #{gender})
+    </insert>
+    <update id="updateStudent" parameterType="Map">
+        update student set name=#{name},age=#{age},gender=#{gender} where id=#{id}
+    </update>
+
+
+    <select id="selectAll" resultType="Student">
+        select * from student
+    </select>
+<!--    分页查询-->
+    <select id="selectPage" resultType="Student" parameterType="Map">
+        select * from student limit #{offset},#{pageSize}
+    </select>
+    <!--   总数量-->
+    <select id="selectCount" resultType="java.lang.Integer">
+        select count(*) from student
+    </select>
+<!--按id删除-->
+    <delete id="deleteById" parameterType="integer">
+        delete from student where id=#{id}
+    </delete>
+</mapper>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--保存命令：一张表一个实体类就对应一个mapper-->
+<!--namespace：命令空间-->
+<mapper namespace="com.situ.MyBatis.pojo.Student">
+
+    <!--    sql片段-->
+    <sql id="studentColumns">
+        id,name,age,gender,banji_id
+    </sql>
+    <!--    结果集的映射-->
+
+    <resultMap id="studentMap" type="Student">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="gender" property="gender"/>
+        <result column="banji_id" property="banjiId"/>
+    </resultMap>
+
+
+    <!--    parameterType：参数类型-->
+    <!--    resultType：返回值类型-->
+    <!--设置命令-->
+
+    <!-- public Student selectById(Integer id) {}
+		parameterType="java.lang.Integer"
+		resultType="com.situ.mybatis.pojo.Student"
+	-->
+    <select id="selectById" parameterType="Integer" resultType="Student">
+        select
+        <include refid="studentColumns"/>
+        from student
+        where id = #{id}
+    </select>
+
+    <!-- resultMap最终是要将结果映射到Student上
+当实体类的属性名和表的字段名不一致的时候，必须要写这个映射 -->
+    <select id="selectAll" resultMap="studentMap">
+        select id, name, age, gender, banji_id
+        from student
+    </select>
+
+    <delete id="deleteById" parameterType="integer">
+        delete
+        from student
+        where id = #{id}
+    </delete>
+
+    <!-- 对于更新类的操作返回的是影响的行数，但是resultType不需要写
+	 public void deleteById(Integer id)
+	 更新类返回影响的行数，在这里不用写返回值类型
+	-->
+    <update id="updateById" parameterType="hashmap">
+        update student
+        set name=#{name}
+        where id = #{id}
+    </update>
+
+    <insert id="add" parameterType="Student">
+        insert into student(name, age, gender, banji_id)
+        values (#{name}, #{age}, #{gender}, #{banjiId})
+    </insert>
+
+
+    <select id="selectByPage" parameterType="Map" resultType="Student">
+        SELECT
+        <include refid="studentColumns"/>
+        FROM student LIMIT #{offset},#{pageSize}
+    </select>
+
+    <select id="selectTotalCount" resultType="integer">
+        select count(*)
+        from student
+    </select>
+
+
+    <resultMap id="StudentBanjiMap" type="Student">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="gender" property="gender"/>
+        <!--        <result column="banjiId" property="banjiId"/>-->
+        <association property="banji" javaType="Banji">
+            <id column="banjiId" property="id"/>
+            <result column="banjiName" property="name"/>
+        </association>
+    </resultMap>
+    <!--    resultMap="StudentBanjiMap"-->
+    <select id="selectStudentBanjiInfo" resultMap="StudentBanjiMap">
+        #
+        select s.id, s.`name`, s.age, s.gender, b.id AS banjiId, b.name AS banjiName
+        from student as s
+                 inner join banji as b
+                            on s.banji_id = b.id
+
+    </select>
+
+    <select id="selectByCondition" parameterType="Student" resultMap="studentMap">
+        SELECT
+        <include refid="studentColumns"/>
+        FROM student
+        <where>
+            <if test="name!=null and name!='' ">
+                AND name LIKE concat('%', #{name} ,'%')
+            </if>
+            <if test="age!=null">
+                AND age=#{age}
+            </if>
+            <if test="gender!=null and gender!='' ">
+                AND gender=#{gender}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateCondition" parameterType="Student">
+        update student
+        <set>
+            <if test="name!=null and name!=''">
+                    name=#{name},
+            </if>
+            <if test="age!=null">
+                age=#{age},
+            </if>
+            <if test="gender!=null and gender!=''">
+                gender=#{gender},
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+
+    <!-- delete from student where id in(1,2,3,4) -->
+    <delete id="deleteAllByArray" >
+        DELETE FROM student
+        WHERE id IN
+        <foreach collection="array" open="(" item="id" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <delete id="deleteAllByList" >
+        DELETE FROM student
+        WHERE id IN
+        <foreach collection="list" open="(" item="id" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="selectByCondition1" parameterType="Student" resultMap="studentMap">
+        SELECT <include refid="studentColumns"/>
+        FROM student
+        WHERE
+        <choose>
+            <when test="name!=null and name!=''">
+                name LIKE concat('%',#{name},'%')
+            </when>
+            <when test="age!=null">
+                age=#{age}
+            </when>
+            <when test="gender!=null and gender!=''">
+                gender=#{gender}
+            </when>
+            <otherwise></otherwise>
+        </choose>
+    </select>
+
+
+</mapper>
+
