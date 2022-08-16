@@ -1,5 +1,7 @@
 package com.situ.spring.test;
 
+import com.situ.spring.controller.BanjiController;
+import com.situ.spring.controller.CourseController;
 import com.situ.spring.controller.StudentController;
 import com.situ.spring.pojo.Student;
 import org.junit.Test;
@@ -39,4 +41,21 @@ public class Springtest {
         StudentController studentController= (StudentController) context.getBean("studentController");
         studentController.selectAll();
 
-    }}
+    }
+
+    @Test
+    public void test4() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        CourseController courseController = (CourseController) context.getBean("courseController");
+        courseController.selectAll();
+    }
+
+    @Test
+    public void test5() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        BanjiController banjiController = (BanjiController) context.getBean("banjiController");
+        banjiController.selectAll();
+    }
+
+
+}

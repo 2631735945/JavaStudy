@@ -14,6 +14,9 @@
 	http://www.springframework.org/schema/util
 	http://www.springframework.org/schema/util/spring-util-4.1.xsd">
 
+	<!--base-package:是要扫描的包，扫描这个包下面类上带有注解@Controller @Service @Repositioy  -->
+	<context:component-scan base-package="com.situ.spring"/>
+
 	<!-- IOC容器配置，要创建的所有对象都配置到这里，交给Spring容器来管理 -->
 <!--	scope="prototype"  多例模式-->
 <!--	scope="singleton"  单例模式-->

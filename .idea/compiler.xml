@@ -6,11 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="SpringMvcMyBatis" />
         <module name="WebMvc" />
         <module name="SpringIOC" />
         <module name="Test" />
+        <module name="SSMMaven" />
         <module name="SpringMVC" />
         <module name="MyBatis" />
+        <module name="SSM" />
         <module name="JavaWeb" />
       </profile>
     </annotationProcessing>
@@ -21,6 +24,8 @@
       <module name="SpringIOC" target="1.8" />
       <module name="SpringMVC" target="1.8" />
       <module name="SpringMvcMyBatis" target="1.8" />
+      <module name="SSM" target="6" />
+      <module name="SSMMaven" target="1.7" />
       <module name="Test" target="1.8" />
       <module name="web" target="1.8" />
       <module name="WebMvc" target="1.8" />
